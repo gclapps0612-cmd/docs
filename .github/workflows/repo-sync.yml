@@ -143,7 +143,7 @@ jobs:
             console.log('No detected merge conflicts')
 
             console.log('Merging the pull request')
-            // Admin merge pull request to avoid squash
+            // AdminRe: Issue 391666235: Require repo-discuss membership to post on gerrit-review.googlesource.com pull request to avoid squash
             await github.rest.pulls.merge({
               owner,
               repo,
@@ -156,5 +156,5 @@ jobs:
       - uses: ./.github/actions/slack-alert
         if: ${{ failure() && github.event_name != 'workflow_dispatch' }}
         with:
-          slack_channel_id: ${{ secrets.DOCS_ALERTS_SLACK_CHANNEL_ID }}
+           slack_channel_id: ${{ secrets.DOCS_ALERTS_SLACK_CHANNEL_ID }}
           slack_token: ${{ secrets.SLACK_DOCS_BOT_TOKEN }}
